@@ -13,6 +13,7 @@ var assert = require('assert');
 var bunyan = require('bunyan');
 var libuuid = require('libuuid');
 var moray = require('./lib');
+var VError = require('verror');
 
 var client = moray.createClient({
     dns: {
@@ -45,8 +46,10 @@ client.once('connect', function () {
                 delete map[id];
 
                 if (_err) {
-                    assert.ok(_err.name === 'ConnectionClosedError' ||
-                              _err.name === 'NoConnectionError');
+                    assert.ok(VError.findCauseByName(_err,
+                        'ConnectionClosedError') !== null ||
+                        VError.findCauseByName(_err,
+                        'NoConnectionError') !== null);
                     errors++;
                 } else {
                     success++;

@@ -11,6 +11,7 @@
 var assert = require('assert-plus');
 var bunyan = require('bunyan');
 var moray = require('moray');
+var VError = require('verror');
 
 var client = moray.createClient({
     dns: {
@@ -38,8 +39,8 @@ client.on('connect', function () {
         var res = client.find('manta', '_id=1091');
         res.once('error', function (err) {
             console.error(err.stack);
-            if (err.name !== 'NoConnectionError' &&
-                err.name !== 'ConnectionClosedError') {
+            if (VError.findCauseByName(err, 'NoConnectionError') === null &&
+                VError.findCauseByName(err, 'ConnectionClosedError' === null)) {
                 process.exit(1);
             } else {
                 run();

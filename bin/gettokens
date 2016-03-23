@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (c) 2014, Joyent, Inc.
+ * Copyright (c) 2016, Joyent, Inc.
  */
 
 var path = require('path');
@@ -15,11 +15,9 @@ var url = require('url');
 
 var bunyan = require('bunyan');
 var getopt = require('posix-getopt');
-var vasync = require('vasync');
 
 var moray = require('../lib');
 
-var prettyPrint = true;
 
 
 ///--- Globals
@@ -40,7 +38,7 @@ function usage(msg) {
         console.error(msg);
 
     var str = 'usage: ' + path.basename(process.argv[1]);
-    str += '[-v] [-s] [-H] [-h host] [-p port] bucket [count]';
+    str += '[-v] [-h host] [-p port]';
     console.error(str);
     process.exit(1);
 }
@@ -52,7 +50,7 @@ function parseOptions() {
         host: '127.0.0.1',
         port: 2020
     };
-    var parser = new getopt.BasicParser('vsHh:p:', process.argv);
+    var parser = new getopt.BasicParser('vh:p:', process.argv);
 
     if (process.env['MORAY_URL']) {
         var u = url.parse(process.env['MORAY_URL']);
@@ -84,13 +82,6 @@ function parseOptions() {
         }
     }
 
-    if (parser.optind() >= process.argv.length)
-        usage('missing required arguments: "bucket"');
-
-    var tmp = process.argv.slice(parser.optind());
-    opts.bucket = tmp[0];
-    opts.count = parseInt(tmp[1], 10) | 100;
-
     return (opts);
 }
 
@@ -108,48 +99,13 @@ client = moray.createClient({
 });
 
 client.on('connect', function onConnect() {
-    function checkBucket(cb) {
-        client.getBucket(options.bucket, function (err, bucket) {
-            if (err) {
-                cb(err);
-                return;
-            }
-            if (!bucket.reindex_active ||
-                Object.keys(bucket.reindex_active).length === 0) {
-                // reindexing not require (or already complete)
-                process.exit(0);
-            }
-            cb();
-        });
-    }
-    function reindexLoop(cb) {
-        client.reindexObjects(options.bucket, options.count,
-            function (err, res) {
-            if (err) {
-                cb(err);
-                return;
-            }
-            LOG.info(res, 'reindex');
-            if (res.processed === 0) {
-                cb();
-            } else {
-                process.nextTick(reindexLoop.bind(null, cb));
-            }
-        });
-    }
-
-    checkBucket(function (err) {
+    client.getTokens(function callback(err, b) {
         if (err) {
             console.error(err.message);
             process.exit(1);
         }
-        reindexLoop(function (err2) {
-            if (err2) {
-                console.error(err2.message);
-                process.exit(1);
-            }
-            client.once('close', process.exit.bind(process, 0));
-            client.close();
-        });
+
+        console.log(JSON.stringify(b, null, 2));
+        process.exit(0);
     });
 });

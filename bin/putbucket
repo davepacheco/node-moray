@@ -53,8 +53,7 @@ function parseOptions() {
         index: {},
         options: {}
     };
-    var parser = new getopt.BasicParser('svti:h:p:u:x:',
-                                        process.argv);
+    var parser = new getopt.BasicParser('svti:h:p:u:x:', process.argv);
     var tmp;
 
     if (process.env['MORAY_URL']) {
@@ -121,7 +120,7 @@ function parseOptions() {
 
     if (parser.optind() >= process.argv.length)
         usage('missing required argument: "name"');
-    var tmp = process.argv.slice(parser.optind());
+    tmp = process.argv.slice(parser.optind());
     opts.name = tmp[0];
 
     if (opts.stdin) {

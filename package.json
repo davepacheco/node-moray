@@ -10,7 +10,7 @@
         "url": "git+ssh://git@github.com:joyent/node-moray.git"
     },
     "dependencies": {
-        "assert-plus": "0.1.5",
+        "assert-plus": "^1.0.0",
         "backoff": "^2.4.1",
         "bunyan": "^1.3.2",
         "cueball": "git+ssh://git@github.com:arekinath/node-cueball.git",
@@ -20,7 +20,6 @@
         "once": "1.3.0",
         "posix-getopt": "1.0.0",
         "progbar": "0.1.0",
-        "clone": "0.1.18",
         "verror": "git+ssh://git@github.com/davepacheco/node-verror.git#dev-issue-10"
     },
     "directories": {

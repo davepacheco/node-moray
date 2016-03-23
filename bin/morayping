@@ -48,11 +48,9 @@ function parseOptions() {
     var option;
     var opts = {
         host: '127.0.0.1',
-        port: 2020,
+        port: 2020
     };
-    var parser = new getopt.BasicParser('vdh:p:',
-                                        process.argv);
-    var tmp;
+    var parser = new getopt.BasicParser('vdh:p:', process.argv);
 
     if (process.env['MORAY_URL']) {
         var u = url.parse(process.env['MORAY_URL']);

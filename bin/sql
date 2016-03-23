@@ -48,10 +48,9 @@ function parseOptions() {
     var option;
     var opts = {
         host: '127.0.0.1',
-        port: 2020,
+        port: 2020
     };
-    var parser = new getopt.BasicParser('vh:p:',
-                                        process.argv);
+    var parser = new getopt.BasicParser('vh:p:', process.argv);
     var tmp;
 
     if (process.env['MORAY_URL']) {
@@ -87,7 +86,7 @@ function parseOptions() {
     if (parser.optind() >= process.argv.length)
         usage('missing required arguments: "statement"');
 
-    var tmp = process.argv.slice(parser.optind());
+    tmp = process.argv.slice(parser.optind());
     opts.statement = tmp[0];
 
     return (opts);
@@ -116,7 +115,7 @@ client.on('connect', function onConnect() {
 
     req.on('record', function (obj) {
         if (typeof (obj) === 'object' && obj !== null)
-		    console.log(JSON.stringify(obj, null, 2));
+            console.log(JSON.stringify(obj, null, 2));
     });
 
     req.once('end', function () {

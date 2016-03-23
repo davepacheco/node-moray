@@ -48,10 +48,9 @@ function parseOptions() {
     var option;
     var opts = {
         host: '127.0.0.1',
-        port: 2020,
+        port: 2020
     };
-    var parser = new getopt.BasicParser('vsh:p:',
-                                        process.argv);
+    var parser = new getopt.BasicParser('vsh:p:', process.argv);
     var tmp;
 
     if (process.env['MORAY_URL']) {
@@ -93,7 +92,7 @@ function parseOptions() {
     if ((parser.optind() + 1) >= process.argv.length)
         usage('missing required arguments: "key"');
 
-    var tmp = process.argv.slice(parser.optind());
+    tmp = process.argv.slice(parser.optind());
     opts.bucket = tmp[0];
     opts.key = tmp[1];
 

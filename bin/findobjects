@@ -52,8 +52,7 @@ function parseOptions() {
         port: 2020,
         sort: {}
     };
-    var parser = new getopt.BasicParser('nsva:d:Hh:l:o:p:',
-                                        process.argv);
+    var parser = new getopt.BasicParser('nsva:d:Hh:l:o:p:', process.argv);
     var tmp;
 
     if (process.env['MORAY_URL']) {
@@ -121,7 +120,7 @@ function parseOptions() {
     if ((parser.optind() + 1) >= process.argv.length)
         usage('missing required arguments: "filter"');
 
-    var tmp = process.argv.slice(parser.optind());
+    tmp = process.argv.slice(parser.optind());
     opts.bucket = tmp[0];
     opts.filter = tmp[1];
 

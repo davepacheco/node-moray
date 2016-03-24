@@ -107,6 +107,7 @@ var client;
 var options = parseOptions();
 
 client = moray.createClient({
+    mustCloseBeforeNormalProcessExit: true,
     host: options.host,
     log: LOG,
     port: options.port

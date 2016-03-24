@@ -16,6 +16,7 @@ var moray = require('./lib');
 var VError = require('verror');
 
 var client = moray.createClient({
+    mustCloseBeforeNormalProcessExit: true,
     dns: {
         resolvers: ['10.99.99.11']
     },

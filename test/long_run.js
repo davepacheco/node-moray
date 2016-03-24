@@ -32,6 +32,7 @@ var CONFIG = {
 ///--- Mainline
 (function main() {
     var client = moray.createClient({
+        mustCloseBeforeNormalProcessExit: true,
         connectTimeout: 1000,
         dns: {
             checkInterval: 2000,

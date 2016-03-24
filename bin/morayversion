@@ -103,7 +103,7 @@ client = moray.createClient({
 
 client.on('connect', function onConnect() {
     var rqoptions = {deep: options.deep, log: LOG};
-    client.version(rqoptions, function callback(err, data) {
+    client.versionInternal(rqoptions, function callback(err, data) {
         if (err) {
             console.error(err.toString());
             process.exit(1);

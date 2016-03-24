@@ -128,6 +128,7 @@ client.on('connect', function onConnect() {
 
             if (prettyPrint) {
                 console.log(JSON.stringify(obj, null, 2));
+                client.close();
             } else {
                 console.log(JSON.stringify(obj));
                 client.close();

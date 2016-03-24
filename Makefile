@@ -25,7 +25,6 @@
 #
 # Tools
 #
-NODEUNIT		:= ./node_modules/.bin/nodeunit
 NPM			:= npm
 
 #
@@ -46,18 +45,8 @@ include ./tools/mk/Makefile.smf.defs
 # Repo-specific targets
 #
 .PHONY: all
-all: $(NODEUNIT) $(REPO_DEPS)
+all: $(REPO_DEPS)
 	$(NPM) rebuild
-
-$(NODEUNIT): | $(NPM_EXEC)
-	$(NPM) install
-
-CLEAN_FILES += $(NODEUNIT) ./node_modules/nodeunit
-
-.PHONY: test
-test: $(NODEUNIT)
-	echo "write some tests"
-	#$(NODEUNIT) test/*.test.js
 
 include ./tools/mk/Makefile.deps
 include ./tools/mk/Makefile.targ

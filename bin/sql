@@ -119,6 +119,6 @@ client.on('connect', function onConnect() {
     });
 
     req.once('end', function () {
-        process.exit(0);
+        client.close();
     });
 });

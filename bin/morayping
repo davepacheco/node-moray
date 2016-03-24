@@ -107,6 +107,6 @@ client.on('connect', function onConnect() {
             console.error(err.toString());
             process.exit(1);
         }
-        process.exit(0);
+        client.close();
     });
 });

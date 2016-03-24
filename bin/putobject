@@ -117,15 +117,13 @@ client = moray.createClient({
 });
 
 client.on('connect', function onConnect() {
-    client.putObject(options.bucket,
-                     options.key,
-                     options.data || {},
-                     options.etag ? { 'etag': options.etag } : {},
-                     function callback(err) {
-                         if (err) {
-                             console.error(err.message);
-                             process.exit(1);
-                         }
-                         process.exit(0);
-                     });
+    client.putObject(options.bucket, options.key, options.data || {},
+        options.etag ? { 'etag': options.etag } : {}, function callback(err) {
+            if (err) {
+                console.error(err.message);
+                process.exit(1);
+            }
+
+            client.close();
+        });
 });

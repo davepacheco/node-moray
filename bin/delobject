@@ -113,14 +113,12 @@ client = moray.createClient({
 });
 
 client.on('connect', function onConnect() {
-    client.delObject(options.bucket,
-                     options.key,
-                     function callback(err, obj) {
-                         if (err) {
-                             console.error(err.message);
-                             process.exit(1);
-                         }
+    client.delObject(options.bucket, options.key, function callback(err, obj) {
+        if (err) {
+            console.error(err.message);
+            process.exit(1);
+        }
 
-                         process.exit(0);
-                     });
+        client.close();
+    });
 });

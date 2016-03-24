@@ -133,6 +133,6 @@ client.on('connect', function onConnect() {
         }
 
         console.log(meta.count + ' records deleted');
-        process.exit(0);
+        client.close();
     });
 });

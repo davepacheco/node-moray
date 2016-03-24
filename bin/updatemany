@@ -118,16 +118,13 @@ client = moray.createClient({
 });
 
 client.on('connect', function onConnect() {
-    client.updateObjects(options.bucket,
-                         options.data || {},
-                         options.filter,
-                         options.options,
-                         function callback(err, meta) {
-                             if (err) {
-                                 console.error(err.message);
-                                 process.exit(1);
-                             }
-                             console.log(meta);
-                             process.exit(0);
-                         });
+    client.updateObjects(options.bucket, options.data || {}, options.filter,
+        options.options, function callback(err, meta) {
+            if (err) {
+                console.error(err.message);
+                process.exit(1);
+            }
+            console.log(meta);
+            client.close();
+        });
 });

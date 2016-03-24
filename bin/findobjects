@@ -162,6 +162,6 @@ client.on('connect', function onConnect() {
     });
 
     req.on('end', function () {
-        process.exit(0);
+        client.close();
     });
 });

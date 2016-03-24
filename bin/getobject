@@ -118,20 +118,18 @@ client = moray.createClient({
 });
 
 client.on('connect', function onConnect() {
-    client.getObject(options.bucket,
-                     options.key,
-                     { noCache: options.noCache },
-                     function callback(err, obj) {
-                         if (err) {
-                             console.error(err.message);
-                             process.exit(1);
-                         }
+    client.getObject(options.bucket, options.key, { noCache: options.noCache },
+        function callback(err, obj) {
+            if (err) {
+                console.error(err.message);
+                process.exit(1);
+            }
 
-                         if (prettyPrint)
-                             console.log(
-                                 JSON.stringify(obj, null, 2));
-                         else
-                             console.log(JSON.stringify(obj));
-                         process.exit(0);
-                     });
+            if (prettyPrint) {
+                console.log(JSON.stringify(obj, null, 2));
+            } else {
+                console.log(JSON.stringify(obj));
+                client.close();
+            }
+        });
 });

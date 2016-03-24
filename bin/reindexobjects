@@ -117,7 +117,7 @@ client.on('connect', function onConnect() {
             if (!bucket.reindex_active ||
                 Object.keys(bucket.reindex_active).length === 0) {
                 // reindexing not require (or already complete)
-                process.exit(0);
+                client.close();
             }
             cb();
         });

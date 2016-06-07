@@ -24,7 +24,7 @@ var prettyPrint = true;
 
 var LOG = bunyan.createLogger({
     name: path.basename(process.argv[1]),
-    level: (process.env.LOG_LEVEL || 'info'),
+    level: (process.env.LOG_LEVEL || 'warn'),
     stream: process.stderr,
     serializers: bunyan.stdSerializers
 });

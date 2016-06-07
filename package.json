@@ -21,6 +21,9 @@
         "progbar": "0.1.0",
         "verror": "git+ssh://git@github.com/davepacheco/node-verror.git#dev-issue-10"
     },
+    "devDependencies": {
+        "vasync": "^1.6.4"
+    },
     "directories": {
         "bin": "./bin",
         "lib": "./lib"

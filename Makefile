@@ -48,5 +48,9 @@ include ./tools/mk/Makefile.smf.defs
 all: $(REPO_DEPS)
 	$(NPM) rebuild
 
+.PHONY: test
+test:
+	$(NODE) test/loop.test.js
+
 include ./tools/mk/Makefile.deps
 include ./tools/mk/Makefile.targ

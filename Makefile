@@ -25,6 +25,7 @@
 #
 # Tools
 #
+NODE			:= node
 NPM			:= npm
 
 #

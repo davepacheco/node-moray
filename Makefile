@@ -51,7 +51,7 @@ all: $(REPO_DEPS)
 
 .PHONY: test
 test:
-	$(NODE) test/loop.test.js
+	@echo To run automated tests, use the moray-test-suite repository.
 
 include ./tools/mk/Makefile.deps
 include ./tools/mk/Makefile.targ

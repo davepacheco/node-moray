@@ -14,7 +14,7 @@
         "backoff": "^2.4.1",
         "bunyan": "^1.3.2",
         "cueball": "git+ssh://git@github.com:arekinath/node-cueball.git",
-        "fast": "git+ssh://git@github.com:joyent/node-fast2.git#dev-initial",
+        "fast": "^2.0.0",
         "libuuid": "0.1.4",
         "jsprim": "^1.2.2",
         "posix-getopt": "^1.0.0",

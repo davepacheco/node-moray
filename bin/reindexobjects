@@ -14,6 +14,7 @@ var path = require('path');
 var url = require('url');
 
 var bunyan = require('bunyan');
+var cmdutil = require('cmdutil');
 var getopt = require('posix-getopt');
 var vasync = require('vasync');
 
@@ -26,7 +27,7 @@ var prettyPrint = true;
 
 var LOG = bunyan.createLogger({
     name: path.basename(process.argv[1]),
-    level: (process.env.LOG_LEVEL || 'warn'),
+    level: (process.env.LOG_LEVEL || 'fatal'),
     stream: process.stderr,
     serializers: bunyan.stdSerializers
 });
@@ -103,6 +104,7 @@ var options = parseOptions();
 
 client = moray.createClient({
     mustCloseBeforeNormalProcessExit: true,
+    failFast: true,
     host: options.host,
     log: LOG,
     port: options.port
@@ -119,6 +121,7 @@ client.on('connect', function onConnect() {
                 Object.keys(bucket.reindex_active).length === 0) {
                 // reindexing not require (or already complete)
                 client.close();
+                process.exit(0);
             }
             cb();
         });
@@ -154,3 +157,5 @@ client.on('connect', function onConnect() {
         });
     });
 });
+
+client.on('error', cmdutil.fail);

@@ -14,6 +14,7 @@ var path = require('path');
 var url = require('url');
 
 var bunyan = require('bunyan');
+var cmdutil = require('cmdutil');
 var getopt = require('posix-getopt');
 
 var moray = require('../lib');
@@ -24,7 +25,7 @@ var moray = require('../lib');
 
 var LOG = bunyan.createLogger({
     name: path.basename(process.argv[1]),
-    level: (process.env.LOG_LEVEL || 'warn'),
+    level: (process.env.LOG_LEVEL || 'fatal'),
     stream: process.stderr,
     serializers: bunyan.stdSerializers
 });
@@ -48,9 +49,10 @@ function parseOptions() {
     var option;
     var opts = {
         host: '127.0.0.1',
-        port: 2020
+        port: 2020,
+        failFast: true
     };
-    var parser = new getopt.BasicParser('vdh:p:', process.argv);
+    var parser = new getopt.BasicParser('vdFh:p:', process.argv);
 
     if (process.env['MORAY_URL']) {
         var u = url.parse(process.env['MORAY_URL']);
@@ -63,6 +65,11 @@ function parseOptions() {
         case 'd':
             opts.deep = true;
             break;
+
+        case 'F':
+            opts.failFast = false;
+            break;
+
         case 'h':
             opts.host = option.optarg;
             break;
@@ -97,6 +104,7 @@ var options = parseOptions();
 
 client = moray.createClient({
     mustCloseBeforeNormalProcessExit: true,
+    failFast: options.failFast,
     host: options.host,
     log: LOG,
     port: options.port
@@ -111,3 +119,5 @@ client.on('connect', function onConnect() {
         client.close();
     });
 });
+
+client.on('error', cmdutil.fail);

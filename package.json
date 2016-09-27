@@ -13,6 +13,7 @@
         "assert-plus": "^1.0.0",
         "backoff": "^2.4.1",
         "bunyan": "^1.3.2",
+        "cmdutil": "^1.1.0",
         "cueball": "git+ssh://git@github.com:arekinath/node-cueball.git",
         "fast": "^2.0.0",
         "libuuid": "0.1.4",

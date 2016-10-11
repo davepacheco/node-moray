@@ -15,7 +15,7 @@
         "cmdutil": "^1.1.0",
         "cueball": "^1.0.3",
         "fast": "^2.1.0",
-        "libuuid": "0.1.4",
+        "libuuid": "0.2.1",
         "jsprim": "^1.2.2",
         "posix-getopt": "^1.0.0",
         "progbar": "0.1.0",

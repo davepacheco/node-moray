@@ -5,7 +5,7 @@
 #
 
 #
-# Copyright (c) 2014, Joyent, Inc.
+# Copyright (c) 2016, Joyent, Inc.
 #
 
 #
@@ -48,10 +48,6 @@ include ./tools/mk/Makefile.smf.defs
 .PHONY: all
 all: $(REPO_DEPS)
 	$(NPM) rebuild
-
-.PHONY: test
-test:
-	@echo To run automated tests, use the moray-test-suite repository.
 
 include ./tools/mk/Makefile.deps
 include ./tools/mk/Makefile.targ

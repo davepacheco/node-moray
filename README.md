@@ -5,15 +5,18 @@
 -->
 
 <!--
-    Copyright (c) 2014, Joyent, Inc.
+    Copyright (c) 2016, Joyent, Inc.
 -->
 
 # node-moray
 
-This repository is part of the Joyent Manta and SmartDataCenter (SDC) projects.
-For  contribution guidelines, issues, and general documentation, visit the main
-[SDC](http://github.com/joyent/sdc) and [Manta](http://github.com/joyent/manta)
-project pages.
+This repository is part of the Joyent Triton and Joyent Manta projects. See the
+[Triton](https://github.com/joyent/triton/blob/master/CONTRIBUTING.md) and
+[Manta](https://github.com/joyent/manta/blob/master/CONTRIBUTING.md)
+contributing guidelines and general documentation at the main [Triton]
+(https://github.com/joyent/triton) and [Manta](http://github.com/joyent/manta)
+project pages. *Do not use GitHub PRs*.
+
 
 ## Overview
 
@@ -23,11 +26,5 @@ For usage information, visit the Moray docs.
 
 # Testing
 
-To test this Moray client:
-
-- Clone the Moray server repo.
-- Use "make" to build the Moray server repo.
-- Use "npm ln" to link your client repo into the server repo for the "moray"
-  dependency (e.g., "cd /path/to/server/repo; npm ln /path/to/client/repo").
-- Follow the instructions in the Moray server repo to test it.  Since it's using
-  your client, this will exercise the test suite using your client.
+To test this Moray client, see the separate
+[moray-test-suite](https://github.com/joyent/moray-test-suite) repository.

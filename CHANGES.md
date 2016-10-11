@@ -50,17 +50,17 @@ networking failures.
 
 Specific issues fixed:
 
-* [http://smartos.org/bugview/MORAY-362](MORAY-362) reindexobjects always fails on missing vasync dependency
-* [http://smartos.org/bugview/MORAY-361](MORAY-361) moray client tools hang forever while moray is down
-* [http://smartos.org/bugview/MORAY-346](MORAY-346) moray client needs work
-* [http://smartos.org/bugview/MORAY-309](MORAY-309) error events should be emitted with prudence
-* [http://smartos.org/bugview/MORAY-257](MORAY-257) MorayClient should emit errors properly
-* [http://smartos.org/bugview/MORAY-300](MORAY-300) node-moray requires log parameter unnecessarily for version and ping
-* [http://smartos.org/bugview/MORAY-334](MORAY-334) minnow clients reporting no active connections when moray seems to be up
-* [http://smartos.org/bugview/MORAY-356](MORAY-356) moray client continuing to periodically check DNS after close
-* [http://smartos.org/bugview/MORAY-325](MORAY-325) node-moray client emits 'close' event even if some connections are still open
-* [http://smartos.org/bugview/MORAY-365](MORAY-365) command-line tools are not checked for style or lint
-* [http://smartos.org/bugview/MORAY-366](MORAY-366) want command-line tool for "gettokens" RPC call
+* [MORAY-362](http://smartos.org/bugview/MORAY-362) reindexobjects always fails on missing vasync dependency
+* [MORAY-361](http://smartos.org/bugview/MORAY-361) moray client tools hang forever while moray is down
+* [MORAY-346](http://smartos.org/bugview/MORAY-346) moray client needs work
+* [MORAY-309](http://smartos.org/bugview/MORAY-309) error events should be emitted with prudence
+* [MORAY-257](http://smartos.org/bugview/MORAY-257) MorayClient should emit errors properly
+* [MORAY-300](http://smartos.org/bugview/MORAY-300) node-moray requires log parameter unnecessarily for version and ping
+* [MORAY-334](http://smartos.org/bugview/MORAY-334) minnow clients reporting no active connections when moray seems to be up
+* [MORAY-356](http://smartos.org/bugview/MORAY-356) moray client continuing to periodically check DNS after close
+* [MORAY-325](http://smartos.org/bugview/MORAY-325) node-moray client emits 'close' event even if some connections are still open
+* [MORAY-365](http://smartos.org/bugview/MORAY-365) command-line tools are not checked for style or lint
+* [MORAY-366](http://smartos.org/bugview/MORAY-366) want command-line tool for "gettokens" RPC call
 
 
 ## v1 and earlier

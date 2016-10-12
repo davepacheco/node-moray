@@ -61,6 +61,8 @@ Specific issues fixed:
 * [MORAY-325](http://smartos.org/bugview/MORAY-325) node-moray client emits 'close' event even if some connections are still open
 * [MORAY-365](http://smartos.org/bugview/MORAY-365) command-line tools are not checked for style or lint
 * [MORAY-366](http://smartos.org/bugview/MORAY-366) want command-line tool for "gettokens" RPC call
+* [MORAY-238](http://smartos.org/bugview/MORAY-238) node-moray retry policy does not match what's configured
+* [MORAY-357](http://smartos.org/bugview/MORAY-357) moray errors indict client for server-side problem
 
 
 ## v1 and earlier

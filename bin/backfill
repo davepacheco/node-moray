@@ -209,9 +209,7 @@ function backfillBucket() {
                     }
                 });
 
-                countReq.once('end', function () {
-                    return (cb());
-                });
+                countReq.once('end', cb);
             } else {
                 cb();
             }

@@ -2,10 +2,13 @@
 
 ## v3.0.0
 
+* [MORAY-280](http://smartos.org/bugview/MORAY-280) Support SRV records in node-moray
 * [MORAY-381](http://smartos.org/bugview/MORAY-381) want default values with cueballOptions
 * [MORAY-380](http://smartos.org/bugview/MORAY-380) translateLegacyOptions not setting "service"
 * [MORAY-383](http://smartos.org/bugview/MORAY-383) moray client log entries could include specific backend details
 * [MORAY-384](http://smartos.org/bugview/MORAY-384) moray's default connection backoff need to be much less aggressive
+* [MORAY-385](http://smartos.org/bugview/MORAY-385) moray tools need some cleanup
+* [MORAY-349](http://smartos.org/bugview/MORAY-349) remove "backfill" command
 
 **Breaking changes:**
 
@@ -18,6 +21,7 @@
   repository](https://github.com/joyent/moray/blob/master/docs/index.md).  See
   [RFD 73](https://github.com/joyent/rfd/tree/master/rfd/0073) for details on
   the reasons for the change.
+* The `backfill` command has been removed.  Use `reindexobjects` instead.
 
 ## v2.0.1
 

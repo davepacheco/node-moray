@@ -37,8 +37,7 @@ parser = moraycli.parseCliOptions({
         case 'l':
             p = parseInt(option.optarg, 10);
             if (isNaN(p) || p < 0) {
-                cmdutil.usage('unsupported value for -l / --limit: "%s"',
-                    option.optarg);
+                cmdutil.usage('unsupported value for -l: "%s"', option.optarg);
             }
             delOptions.limit = p;
             break;
@@ -46,8 +45,7 @@ parser = moraycli.parseCliOptions({
         case 'o':
             p = parseInt(option.optarg, 10);
             if (isNaN(p) || p < 0) {
-                cmdutil.usage('unsupported value for -o / --offset: "%s"',
-                    option.optarg);
+                cmdutil.usage('unsupported value for -o: "%s"', option.optarg);
             }
             delOptions.offset = p;
             break;

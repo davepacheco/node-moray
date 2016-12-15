@@ -21,8 +21,8 @@ var prettyPrint = true;
 cmdutil.configure({
     'usageMessage': 'fetch objects from Moray matching a filter',
     'synopses': [
-        moraycli.commonUsage + '[-H] [-a attr] [-d attr] [-l limit] ' +
-            '[-o offset] [-s] [-n] BUCKET FILTER'
+        moraycli.commonUsage + '[-Hns] [-a attr] [-d attr] [-l limit] ' +
+            '[-o offset] BUCKET FILTER'
     ]
 });
 

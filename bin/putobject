@@ -19,7 +19,7 @@ var clientOptions, parser, client;
 var bucket, key, value, putOptions;
 
 cmdutil.configure({
-    'usageMessage': 'insert an object into Moray',
+    'usageMessage': 'create or update an object in Moray',
     'synopses': [ moraycli.commonUsage + ' [-d DATA] [-e ETAG] ' +
         'BUCKET KEY' ]
 });

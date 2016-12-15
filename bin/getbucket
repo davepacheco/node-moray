@@ -34,7 +34,6 @@ parser = moraycli.parseCliOptions({
 if (parser.optind() >= process.argv.length) {
     cmdutil.usage('missing required argument: "bucket"');
 }
-
 bucket = process.argv[parser.optind()];
 
 client = moray.createClient(clientOptions);

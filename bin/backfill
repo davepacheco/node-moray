@@ -26,28 +26,17 @@
  */
 
 
-var p = console.log;
 var path = require('path');
 var util = require('util');
-var bunyan = require('bunyan');
 var cmdutil = require('cmdutil');
-var getopt = require('posix-getopt');
 var ProgressBar = require('progbar').ProgressBar;
+var format = util.format;
 
 var moray = require('../lib');
-
+var moraycli = require('../lib/cmd');
 
 
 ///--- Globals
-
-var format = util.format;
-
-var LOG = bunyan.createLogger({
-    name: path.basename(process.argv[1]),
-    level: (process.env.LOG_LEVEL || 'fatal'),
-    stream: process.stderr,
-    serializers: bunyan.stdSerializers
-});
 
 // Total number of objects to backfill
 var TOTAL = 0;
@@ -55,6 +44,17 @@ var TOTAL = 0;
 var PROCESSED = 0;
 var START = Date.now();
 
+// Moray client options
+var clientOptions = {};
+
+// Backfill options
+var options = {
+    indexes: [],
+    limit: 100,
+    predicates: {}
+};
+
+var LOG;
 
 
 ///--- Functions
@@ -66,92 +66,61 @@ function usage(msg) {
 
     var str = 'usage: ' + path.basename(process.argv[1]);
     // "limit" here is really batch size.
-    str += ' [-v] [-h host] [-p port] [-i index] [-l batch-size] ' +
+    str += moraycli.commonUsage + ' [-i index] [-l batch-size] ' +
         '[-P predicate] bucket';
     console.error(str);
     process.exit(1);
 }
 
 function parseOptions() {
-    var option;
-    var opts = {
-        host: '127.0.0.1',
-        port: 2020,
-        indexes: [],
-        limit: 100,
-        predicates: {}
-    };
-    var parser = new getopt.BasicParser('vh:p:l:i:P:', process.argv);
-    var tmp;
+    var parser = moraycli.parseCliOptions({
+        'argv': process.argv,
+        'env': process.env,
+        'extraOptStr': 'i:l:p:',
+        'clientOptions': clientOptions,
+        'onUsage': usage,
+        'onOption': function (option) {
+            switch (option.option) {
+            case 'i':
+                options.indexes.push(option.optarg);
+                break;
 
-    while ((option = parser.getopt()) !== undefined && !option.error) {
-        switch (option.option) {
-        case 'h':
-            opts.host = option.optarg;
-            break;
+            case 'l':
+                options.limit = parseInt(option.optarg, 10);
+                break;
 
-        case 'p':
-            opts.port = parseInt(option.optarg, 10);
-            break;
+            case 'P':
+                var equal = option.optarg.indexOf('=');
+                if (equal === -1) {
+                    usage('error: "-P" arg is not of the form "field=value":'
+                          + option.optarg);
+                }
+                var field = option.optarg.slice(0, equal);
+                var value = option.optarg.slice(equal + 1);
+                if (!options.predicates[field]) {
+                    options.predicates[field] = [];
+                }
+                options.predicates[field].push(value);
+                break;
 
-        case 'i':
-            tmp = option.optarg;
-            opts.indexes.push(tmp);
-            break;
-
-        case 'l':
-            opts.limit = parseInt(option.optarg, 10);
-            break;
-
-        case 'P':
-            var equal = option.optarg.indexOf('=');
-            if (equal === -1) {
-                usage('error: "-P" arg is not of the form "field=value":'
-                      + option.optarg);
+            default:
+                process.exit(1);
+                break;
             }
-            var field = option.optarg.slice(0, equal);
-            var value = option.optarg.slice(equal + 1);
-            if (!opts.predicates[field]) {
-                opts.predicates[field] = [];
-            }
-            opts.predicates[field].push(value);
-            break;
-
-
-        case 'v':
-            // Allows us to set -vvv -> this little hackery
-            // just ensures that we're never < TRACE
-            LOG.level(Math.max(bunyan.TRACE, (LOG.level() - 10)));
-            if (LOG.level() <= bunyan.DEBUG)
-                LOG = LOG.child({src: true});
-            break;
-
-        default:
-            process.exit(1);
-            break;
         }
-    }
+    });
 
     if (parser.optind() >= process.argv.length) {
         usage('missing required argument: "bucket"');
     }
 
-    opts.name = process.argv[parser.optind()];
-    return (opts);
+    options.name = process.argv[parser.optind()];
+    LOG = clientOptions.log;
 }
 
 
-var options = parseOptions();
-
-
 function backfillBucket() {
-    var client = moray.createClient({
-        mustCloseBeforeNormalProcessExit: true,
-        failFast: true,
-        host: options.host,
-        log: LOG,
-        port: options.port
-    });
+    var client = moray.createClient(clientOptions);
     var bar;
 
     client.on('error', cmdutil.fail);
@@ -311,4 +280,5 @@ function backfillBucket() {
 
 }
 
+parseOptions();
 backfillBucket();

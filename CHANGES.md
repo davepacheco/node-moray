@@ -1,5 +1,24 @@
 # Changelog
 
+## v3.0.0
+
+* [MORAY-381](http://smartos.org/bugview/MORAY-381) want default values with cueballOptions
+* [MORAY-380](http://smartos.org/bugview/MORAY-380) translateLegacyOptions not setting "service"
+* [MORAY-383](http://smartos.org/bugview/MORAY-383) moray client log entries could include specific backend details
+* [MORAY-384](http://smartos.org/bugview/MORAY-384) moray's default connection backoff need to be much less aggressive
+
+**Breaking changes:**
+
+* Constructor arguments have changed.  The only change that will explicitly
+  break existing v2 consumers is that the `cueballOptions.domain` option is no
+  longer supported.  However, it's strongly recommended that all consumers
+  update their constructor arguments to support SRV-based service discovery.
+  Best practices (with examples) are included in the [updated documentation,
+  which lives in the Moray server
+  repository](https://github.com/joyent/moray/blob/master/docs/index.md).  See
+  [RFD 73](https://github.com/joyent/rfd/tree/master/rfd/0073) for details on
+  the reasons for the change.
+
 ## v2.0.1
 
 * [MORAY-377](http://smartos.org/bugview/MORAY-377) moray client masks callers'

@@ -26,10 +26,10 @@ clientOptions = {};
 parser = moraycli.parseCliOptions({
     'argv': process.argv,
     'env': process.env,
+    'errstream': process.stderr,
     'extraOptStr': '',
     'clientOptions': clientOptions,
-    'onUsage': cmdutil.usage,
-    'onOption': function () { cmdutil.usage(); }
+    'onUsage': cmdutil.usage
 });
 
 client = moray.createClient(clientOptions);

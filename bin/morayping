@@ -27,6 +27,7 @@ failFast = true;
 parser = moraycli.parseCliOptions({
     'argv': process.argv,
     'env': process.env,
+    'errstream': process.stderr,
     'extraOptStr': 'dF',
     'clientOptions': clientOptions,
     'onUsage': cmdutil.usage,

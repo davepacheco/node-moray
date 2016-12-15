@@ -30,6 +30,7 @@ value = {};
 parser = moraycli.parseCliOptions({
     'argv': process.argv,
     'env': process.env,
+    'errstream': process.stderr,
     'extraOptStr': 'd:e:',
     'clientOptions': clientOptions,
     'onUsage': cmdutil.usage,

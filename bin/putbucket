@@ -92,6 +92,7 @@ putOptions = {
 parser = moraycli.parseCliOptions({
     'argv': process.argv,
     'env': process.env,
+    'errstream': process.stderr,
     'extraOptStr': 'i:stu:x:',
     'clientOptions': clientOptions,
     'onUsage': cmdutil.usage,

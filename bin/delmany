@@ -29,6 +29,7 @@ delOptions = {};
 parser = moraycli.parseCliOptions({
     'argv': process.argv,
     'env': process.env,
+    'errstream': process.stderr,
     'extraOptStr': 'l:o:',
     'clientOptions': clientOptions,
     'onUsage': cmdutil.usage,

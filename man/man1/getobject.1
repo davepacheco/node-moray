@@ -1,0 +1,55 @@
+.TH getobject 1 "December 2016" Moray "Moray Client Tools"
+.SH NAME
+.PP
+getobject \- fetch the contents of an object by primary key
+.SH SYNOPSIS
+.PP
+\fB\fCgetobject [COMMON_OPTIONS] BUCKET KEY\fR
+.SH DESCRIPTION
+.PP
+Fetches the contents of the object in \fB\fCBUCKET\fR having primary key \fB\fCKEY\fR\&.  The
+result is emitted as JSON with properties:
+.PP
+\fB\fCbucket\fR
+    matches BUCKET
+.PP
+\fB\fCkey\fR
+    matches KEY
+.PP
+\fB\fCvalue\fR
+    the contents of the object, which are completely user\-defined
+.PP
+\fB\fC_id\fR
+    a unique, integer id associated with each object.  It should not be assumed
+    that these ids are assigned in any particular order, but each update of an
+    object will cause it to have a new id.  Critically, it is not true that if a
+    caller inserts objects 1 and 2 concurrently and another caller sees object
+    2, then it could also see object 1.  Ids may be assigned out of insertion
+    order.
+.PP
+\fB\fC_etag\fR
+    a numeric value calculated from the contents of the object.  This can be
+    used for conditional put operations.  See \fB\fCputobject(1)\fR\&.
+.SH OPTIONS
+.PP
+\fB\fC\-H\fR
+    Print the object using minimal JSON (instead of inserting newlines and
+    indenting for readability)
+.PP
+\fB\fC\-s\fR
+    Skip the built\-in Moray bucket cache.  This may be slightly faster, but 
+    may fail spuriously if the bucket has been recently created and the remote
+    server has not yet learned of the update.
+    <!\-\- XXX What? Should we document that putbucket is eventually consistent?
+    \-\->
+.PP
+See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
+the log verbosity and how to locate the remote server.
+.SH ENVIRONMENT
+.PP
+See \fB\fCmoray(1)\fR for information about the \fB\fCLOG_LEVEL\fR, \fB\fCMORAY_SERVICE\fR, and
+\fB\fCMORAY_URL\fR environment variables.
+.SH EXAMPLES
+.SH SEE ALSO
+.PP
+\fB\fCmoray(1)\fR, \fB\fCputbucket(1)\fR, \fB\fCputobject(1)\fR, \fB\fCfindobjects(1)\fR

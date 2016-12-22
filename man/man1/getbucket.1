@@ -1,0 +1,24 @@
+.TH getbucket 1 "December 2016" Moray "Moray Client Tools"
+.SH NAME
+.PP
+getbucket \- print detailed information about one bucket
+.SH SYNOPSIS
+.PP
+\fB\fCgetbucket [COMMON_OPTIONS] BUCKET\fR
+.SH DESCRIPTION
+.PP
+Fetches a JSON representation for the configuration of the bucket \fB\fCBUCKET\fR\&.
+This representation includes information about the bucket's version and the
+indexes defined for it.
+.SH OPTIONS
+.PP
+See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
+the log verbosity and how to locate the remote server.
+.SH ENVIRONMENT
+.PP
+See \fB\fCmoray(1)\fR for information about the \fB\fCLOG_LEVEL\fR, \fB\fCMORAY_SERVICE\fR, and
+\fB\fCMORAY_URL\fR environment variables.
+.SH EXAMPLES
+.SH SEE ALSO
+.PP
+\fB\fCmoray(1)\fR, \fB\fCputbucket(1)\fR

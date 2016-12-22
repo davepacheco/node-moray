@@ -26,7 +26,8 @@
     },
     "directories": {
         "bin": "./bin",
-        "lib": "./lib"
+        "lib": "./lib",
+        "man": "./man"
     },
     "license": "MPL-2.0"
 }

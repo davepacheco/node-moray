@@ -2,7 +2,7 @@
 
 ## NAME
 
-listbucket - print detailed information about all bucket
+listbucket - print detailed information about all buckets
 
 ## SYNOPSIS
 

@@ -2,7 +2,7 @@
 
 ## NAME
 
-morayping - check of a Moray server is functioning
+morayping - check if a Moray server is functioning
 
 ## SYNOPSIS
 

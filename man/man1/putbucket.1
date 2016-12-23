@@ -33,6 +33,10 @@ Users may specify the bucket configuration using a combination of the \fB\fC\-i\
 \fB\fC\-u\fR, \fB\fC\-x\fR, or \fB\fC\-t\fR options, or using the \fB\fC\-s\fR option and providing a JSON
 description on stdin.  The \fB\fC\-s\fR option must be used for specifying \fB\fCpre\fR and
 \fB\fCpost\fR triggers.
+.PP
+When you use \fB\fCputbucket(1)\fR to add a new indexed field, that field will not be
+treated as indexed (in filters with \fB\fCfindobjects\fR and similar tools) until all
+objects in the bucket have been reindexed.  See \fB\fCreindexobjects(1)\fR\&.
 .SH OPTIONS
 .PP
 \fB\fC\-i FIELD[:TYPE]\fR
@@ -103,7 +107,7 @@ See \fB\fCmoray(1)\fR for information about the \fB\fCLOG_LEVEL\fR, \fB\fCMORAY_
 .SH EXAMPLES
 .SH SEE ALSO
 .PP
-\fB\fCmoray(1)\fR
+\fB\fCmoray(1)\fR, \fB\fCreindexobjects(1)\fR
 .SH BUGS
 .PP
 The JSON format is not validated on the client side.  Future versions of this

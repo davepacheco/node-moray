@@ -82,8 +82,8 @@ use unindexed fields often results in truncated result sets.
 .PP
 \fB\fC\-l LIMIT\fR
     Return at most \fB\fCLIMIT\fR objects.  With \fB\fC\-o OFFSET\fR, this can be used to page
-    through a large result set.  However, this can interact badly with certain
-    types of filters.  See above.  If this option is unspecified, a default
+    through a large result set.  However, this interacts badly with filters on
+    undexed fields as described above.  If this option is unspecified, a default
     limit is provided (which is currently 1000).
 .PP
 \fB\fC\-n\fR
@@ -108,7 +108,8 @@ See \fB\fCmoray(1)\fR for information about the \fB\fCLOG_LEVEL\fR, \fB\fCMORAY_
 .SH EXAMPLES
 .SH SEE ALSO
 .PP
-\fB\fCmoray(1)\fR, \fB\fCputbucket(1)\fR, \fB\fCputobject(1)\fR, \fB\fCgetobject(1)\fR
+\fB\fCmoray(1)\fR, \fB\fCputbucket(1)\fR, \fB\fCputobject(1)\fR, \fB\fCgetobject(1)\fR, \fB\fCdelmany(1)\fR,
+\fB\fCupdatemany(1)\fR\&.
 .SH BUGS
 .PP
 For the reasons mentioned above, it is generally considered a bug that Moray

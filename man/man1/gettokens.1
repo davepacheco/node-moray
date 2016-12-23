@@ -1,0 +1,38 @@
+.TH gettokens 1 "December 2016" Moray "Moray Client Tools"
+.SH NAME
+.PP
+gettokens \- fetch the list of shards from electric\-moray
+.SH SYNOPSIS
+.PP
+\fB\fCgettokens [COMMON_OPTIONS]\fR
+.SH DESCRIPTION
+.PP
+Reports the list of physical shards behind an electric\-moray instance.
+.PP
+Electric\-moray is a component typically deployed in front of several separate
+Moray shards.  Electric\-moray instances speak the Moray protocol to their
+clients, but they use consistent hashing on some field of each object to select
+the appropriate backend to handle each request.  (This functions similar to a
+layer\-7 load balancer.)  A full discussion of electric\-moray is beyond the scope
+of this documentation.
+.PP
+For this command, the service specified with the \fB\fCCOMMON_OPTIONS\fR should be an
+electric\-moray instance, not a moray instance.
+.SH OPTIONS
+.PP
+See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
+the log verbosity and how to locate the remote server.
+.SH ENVIRONMENT
+.PP
+See \fB\fCmoray(1)\fR for information about the \fB\fCLOG_LEVEL\fR, \fB\fCMORAY_SERVICE\fR, and
+\fB\fCMORAY_URL\fR environment variables.
+.SH EXAMPLES
+.SH SEE ALSO
+.PP
+\fB\fCmoray(1)\fR
+.SH BUGS
+.PP
+It's not clear why backend shards are called "tokens".
+.PP
+This command likely belongs with an electric\-moray tool suite, rather than the
+Moray tool suite.

@@ -39,7 +39,7 @@ Working with remote servers:
 * `morayping`: check whether Moray is online
 * `morayversion`: check the version of a Moray server
 * `sql`: execute a SQL string on a Moray server
-* `gettokens`: list the physical shards behind an electric-moray deployment
+* `gettokens`: fetch the list of shards from electric-moray
 
 The tools in this package support two modes for locating the remote Moray server
 on which to operate:

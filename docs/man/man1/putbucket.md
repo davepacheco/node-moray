@@ -32,6 +32,10 @@ Users may specify the bucket configuration using a combination of the `-i`,
 description on stdin.  The `-s` option must be used for specifying `pre` and
 `post` triggers.
 
+When you use `putbucket(1)` to add a new indexed field, that field will not be
+treated as indexed (in filters with `findobjects` and similar tools) until all
+objects in the bucket have been reindexed.  See `reindexobjects(1)`.
+
 ## OPTIONS
 
 `-i FIELD[:TYPE]`
@@ -104,7 +108,7 @@ See `moray(1)` for information about the `LOG_LEVEL`, `MORAY_SERVICE`, and
 
 ## SEE ALSO
 
-`moray(1)`
+`moray(1)`, `reindexobjects(1)`
 
 ## BUGS
 

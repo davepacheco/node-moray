@@ -71,8 +71,8 @@ use unindexed fields often results in truncated result sets.
 
 `-l LIMIT`
     Return at most `LIMIT` objects.  With `-o OFFSET`, this can be used to page
-    through a large result set.  However, this can interact badly with certain
-    types of filters.  See above.  If this option is unspecified, a default
+    through a large result set.  However, this interacts badly with filters on
+    undexed fields as described above.  If this option is unspecified, a default
     limit is provided (which is currently 1000).
 
 `-n`
@@ -102,7 +102,8 @@ See `moray(1)` for information about the `LOG_LEVEL`, `MORAY_SERVICE`, and
 
 ## SEE ALSO
 
-`moray(1)`, `putbucket(1)`, `putobject(1)`, `getobject(1)`
+`moray(1)`, `putbucket(1)`, `putobject(1)`, `getobject(1)`, `delmany(1)`,
+`updatemany(1)`.
 
 ## BUGS
 

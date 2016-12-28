@@ -129,6 +129,8 @@ The following `COMMON_OPTIONS` options are accepted by all of these commands:
 
 ## SEE ALSO
 
+`moray(3)`
+
 <!-- XXX -->
 
 ## DIAGNOSTICS

@@ -43,6 +43,11 @@ MAN_INROOT	= ./docs/man
 MAN_OUTROOT	= ./man
 include ./tools/mk/Makefile.manpages.defs
 
+MAN_SECTION	= 3
+MAN_INROOT	= ./docs/man
+MAN_OUTROOT	= ./man
+include ./tools/mk/Makefile.manpages.defs
+
 include ./tools/mk/Makefile.defs
 include ./tools/mk/Makefile.smf.defs
 
@@ -62,4 +67,8 @@ manpages: $(MAN_OUTPUTS)
 
 include ./tools/mk/Makefile.deps
 include ./tools/mk/Makefile.targ
+
+MAN_SECTION	= 1
+include ./tools/mk/Makefile.manpages.targ
+MAN_SECTION	= 3
 include ./tools/mk/Makefile.manpages.targ

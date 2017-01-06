@@ -60,10 +60,9 @@ increased scalability and improved fault tolerance.  SRV\-based discovery is
 configured by using the \fB\fCsrvDomain\fR property instead of \fB\fChost\fR or \fB\fCport.\fR
 .IP \(bu 2
 This mode does not enable the client to use bootstrap resolvers, which are
-critical for proper fault tolerance in mixed DNS environments (e.g., where a
-combination of Triton, Manta, or external namservers may be combined).
-Bootstrap resolvers are configured using the \fB\fCcueballOptions.resolvers\fR
-property.
+critical for use in mixed DNS environments (e.g., where a combination of
+Triton, Manta, or external namservers may be in use).  Bootstrap resolvers are
+configured using the \fB\fCcueballOptions.resolvers\fR property.
 .IP \(bu 2
 Command\-line tools should generally specify additional parameters to ensure
 that they fail quickly when servers are down rather than retrying
@@ -119,7 +118,12 @@ In practice, \fB\fCserverConfig.moray\fR comes from a SAPI configuration templat
 .PP
 .RS
 .nf
-<!\-\- XXX \-\->
+{
+    "srvDomain": "{{{MORAY_SERVICE}}}"
+    "cueballOptions": {
+        "resolvers": [ "{{{BINDER_SERVICE}}}" ]
+    }
+}
 .fi
 .RE
 .PP
@@ -136,11 +140,17 @@ That will expand to something like this:
 .fi
 .RE
 .PP
-For \fBManta services\fP, the template file will typically look like this:
+For \fBManta services\fP, the template file will typically include a block that
+looks like this:
 .PP
 .RS
 .nf
-<!\-\- XXX \-\->
+{
+    "srvDomain": "{{MARLIN_MORAY_SHARD}}",
+    "cueballOptions": {
+        "resolvers": [ "nameservice.{{DOMAIN_NAME}}" ]
+    }
+}
 .fi
 .RE
 .PP

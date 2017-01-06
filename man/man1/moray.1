@@ -98,6 +98,14 @@ if neither is specified, the second mode is invoked with default values
 .PP
 The following \fB\fCCOMMON_OPTIONS\fR options are accepted by all of these commands:
 .PP
+\fB\fC\-b, \-\-bootstrap\-domain BOOTSTRAP_DOMAIN\fR
+    Specifies the domain name for the nameservers themselves.  Triton and Manta
+    both provide domain names for the nameservers themselves.  This is useful in
+    split DNS environments to ensure that the Moray only uses the nameservers
+    that know about the target service.  This applies to both SRV\-record\-based
+    discovery and traditional A\-record\-based discovery, but has no impact when
+    connecting to a specific IP address and port.
+.PP
 \fB\fC\-h, \-\-host HOST_OR_IP\fR
     Specifies an IP address or DNS domain for the remote Moray server.  See
     above for details.
@@ -120,6 +128,9 @@ The following \fB\fCCOMMON_OPTIONS\fR options are accepted by all of these comma
 .PP
 \fB\fCLOG_LEVEL\fR
     Sets the node\-bunyan logging level. Defaults to "fatal".
+.PP
+\fB\fCMORAY_BOOTSTRAP_DOMAIN\fR
+    Used as a fallback value for the \fB\fC\-b\fR/\fB\fC\-\-bootstrap\-domain\fR option.
 .PP
 \fB\fCMORAY_SERVICE\fR
     Used as a fallback value for \fB\fC\-S\fR/\fB\fC\-\-service\fR if neither of \fB\fC\-h\fR/\fB\fC\-\-host\fR or

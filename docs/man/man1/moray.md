@@ -76,6 +76,14 @@ If none of these command-line options are specified:
 
 The following `COMMON_OPTIONS` options are accepted by all of these commands:
 
+`-b, --bootstrap-domain BOOTSTRAP_DOMAIN`
+    Specifies the domain name for the nameservers themselves.  Triton and Manta
+    both provide domain names for the nameservers themselves.  This is useful in
+    split DNS environments to ensure that the Moray only uses the nameservers
+    that know about the target service.  This applies to both SRV-record-based
+    discovery and traditional A-record-based discovery, but has no impact when
+    connecting to a specific IP address and port.
+
 `-h, --host HOST_OR_IP`
     Specifies an IP address or DNS domain for the remote Moray server.  See
     above for details.
@@ -99,6 +107,9 @@ The following `COMMON_OPTIONS` options are accepted by all of these commands:
 
 `LOG_LEVEL`
     Sets the node-bunyan logging level. Defaults to "fatal".
+
+`MORAY_BOOTSTRAP_DOMAIN`
+    Used as a fallback value for the `-b`/`--bootstrap-domain` option.
 
 `MORAY_SERVICE`
     Used as a fallback value for `-S`/`--service` if neither of `-h`/`--host` or

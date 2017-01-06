@@ -57,10 +57,9 @@ servers or command-line tools for a few reasons:
   increased scalability and improved fault tolerance.  SRV-based discovery is
   configured by using the `srvDomain` property instead of `host` or `port.`
 * This mode does not enable the client to use bootstrap resolvers, which are
-  critical for proper fault tolerance in mixed DNS environments (e.g., where a
-  combination of Triton, Manta, or external namservers may be combined).
-  Bootstrap resolvers are configured using the `cueballOptions.resolvers`
-  property.
+  critical for use in mixed DNS environments (e.g., where a combination of
+  Triton, Manta, or external namservers may be in use).  Bootstrap resolvers are
+  configured using the `cueballOptions.resolvers` property.
 * Command-line tools should generally specify additional parameters to ensure
   that they fail quickly when servers are down rather than retrying
   indefinitely until they are online.  This means specifying `failFast`.  It's
@@ -104,7 +103,12 @@ configure the Moray client:
 In practice, `serverConfig.moray` comes from a SAPI configuration template.  For
 **Triton services**, it will typically look like this:
 
-    <!-- XXX -->
+    {
+        "srvDomain": "{{{MORAY_SERVICE}}}"
+        "cueballOptions": {
+            "resolvers": [ "{{{BINDER_SERVICE}}}" ]
+        }
+    }
 
 That will expand to something like this:
 
@@ -115,9 +119,15 @@ That will expand to something like this:
         }
     }
 
-For **Manta services**, the template file will typically look like this:
+For **Manta services**, the template file will typically include a block that
+looks like this:
 
-    <!-- XXX -->
+    {
+        "srvDomain": "{{MARLIN_MORAY_SHARD}}",
+        "cueballOptions": {
+            "resolvers": [ "nameservice.{{DOMAIN_NAME}}" ]
+        }
+    }
 
 That will expand to something like this:
 

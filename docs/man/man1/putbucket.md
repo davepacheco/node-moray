@@ -67,7 +67,7 @@ objects in the bucket have been reindexed.  See `reindexobjects(1)`.
 See `moray(1)` for information about the `COMMON_OPTIONS`, which control
 the log verbosity and how to locate the remote server.
 
-The JSON input file may have properties:
+The JSON read from stdin may have the following properties:
 
 `indexes`
     an object whose properties identify each of the indexed fields.  Each value

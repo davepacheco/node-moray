@@ -63,7 +63,7 @@ always used directly as described above.
 If the `-h`/`--host HOST_OR_IP` or `-p`/`--port PORT` options are specified,
 they are used directly as described above.  If one is specified and not the
 other, then the other value is filled in from the `MORAY_URL` environment
-variable.  Otherwise, defaults of IP `127.0.0.1` port `2020` are used.
+variable.  Otherwise, defaults of IP `127.0.0.1` and port `2020` are used.
 
 If none of these command-line options are specified:
 

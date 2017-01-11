@@ -4,7 +4,7 @@
 getobject \- fetch the contents of an object by primary key
 .SH SYNOPSIS
 .PP
-\fB\fCgetobject [COMMON_OPTIONS] BUCKET KEY\fR
+\fB\fCgetobject [COMMON_OPTIONS] [\-Hs] BUCKET KEY\fR
 .SH DESCRIPTION
 .PP
 Fetches the contents of the object in \fB\fCBUCKET\fR having primary key \fB\fCKEY\fR\&.  The
@@ -37,11 +37,7 @@ result is emitted as JSON with properties:
     indenting for readability)
 .PP
 \fB\fC\-s\fR
-    Skip the built\-in Moray bucket cache.  This may be slightly faster, but 
-    may fail spuriously if the bucket has been recently created and the remote
-    server has not yet learned of the update.
-    <!\-\- XXX What? Should we document that putbucket is eventually consistent?
-    \-\->
+    Accepted for backwards compatibility only.
 .PP
 See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
 the log verbosity and how to locate the remote server.

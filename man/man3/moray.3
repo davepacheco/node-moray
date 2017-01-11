@@ -262,7 +262,7 @@ Callers may also provide:
     determine what kind of Error was returned.  New code should prefer
     VError.findCauseByName() instead.
 .PP
-\fB\fCmustCloseBeforeNormalProcessExit (boolean)\fR
+\fB\fCmustCloseBeforeNormalProcessExit\fR (boolean)
     If true, then cause the program to crash if it would otherwise exit 0 and
     this client has not been closed.  This is useful for making sure that client
     consumers clean up after themselves.

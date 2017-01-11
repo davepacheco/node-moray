@@ -32,7 +32,7 @@ or, to put the manual pages and CLI tools on your path:
 For usage information, see:
 
 * [moray(1)](./docs/man/man1/moray.md) (overview manual page for CLI tools)
-* [moray(3)](./docs/man/man1/moray.md) (overview manual page for library
+* [moray(3)](./docs/man/man3/moray.md) (overview manual page for library
   interface)
 * [Moray server](https://github.com/joyent/moray) overview and reference
   documentation

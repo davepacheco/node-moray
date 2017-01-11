@@ -6,7 +6,7 @@ getobject - fetch the contents of an object by primary key
 
 ## SYNOPSIS
 
-`getobject [COMMON_OPTIONS] BUCKET KEY`
+`getobject [COMMON_OPTIONS] [-Hs] BUCKET KEY`
 
 ## DESCRIPTION
 
@@ -43,11 +43,7 @@ result is emitted as JSON with properties:
     indenting for readability)
 
 `-s`
-    Skip the built-in Moray bucket cache.  This may be slightly faster, but 
-    may fail spuriously if the bucket has been recently created and the remote
-    server has not yet learned of the update.
-    <!-- XXX What? Should we document that putbucket is eventually consistent?
-    -->
+    Accepted for backwards compatibility only.
 
 See `moray(1)` for information about the `COMMON_OPTIONS`, which control
 the log verbosity and how to locate the remote server.

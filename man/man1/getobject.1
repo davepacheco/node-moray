@@ -9,35 +9,35 @@ getobject \- fetch the contents of an object by primary key
 .PP
 Fetches the contents of the object in \fB\fCBUCKET\fR having primary key \fB\fCKEY\fR\&.  The
 result is emitted as JSON with properties:
-.PP
+.TP
 \fB\fCbucket\fR
-    matches BUCKET
-.PP
+matches BUCKET
+.TP
 \fB\fCkey\fR
-    matches KEY
-.PP
+matches KEY
+.TP
 \fB\fCvalue\fR
-    the contents of the object, which are completely user\-defined
-.PP
+the contents of the object, which are completely user\-defined
+.TP
 \fB\fC_id\fR
-    a unique, integer id associated with each object.  It should not be assumed
-    that these ids are assigned in any particular order, but each update of an
-    object will cause it to have a new id.  Critically, it is not true that if a
-    caller inserts objects 1 and 2 concurrently and another caller sees object
-    2, then it could also see object 1.  Ids may be assigned out of insertion
-    order.
-.PP
+a unique, integer id associated with each object.  It should not be assumed
+that these ids are assigned in any particular order, but each update of an
+object will cause it to have a new id.  Critically, it is not true that if a
+caller inserts objects 1 and 2 concurrently and another caller sees object
+2, then it could also see object 1.  Ids may be assigned out of insertion
+order.
+.TP
 \fB\fC_etag\fR
-    a numeric value calculated from the contents of the object.  This can be
-    used for conditional put operations.  See \fB\fCputobject(1)\fR\&.
+a numeric value calculated from the contents of the object.  This can be
+used for conditional put operations.  See \fB\fCputobject(1)\fR\&.
 .SH OPTIONS
-.PP
+.TP
 \fB\fC\-H\fR
-    Print the object using minimal JSON (instead of inserting newlines and
-    indenting for readability)
-.PP
+Print the object using minimal JSON (instead of inserting newlines and
+indenting for readability)
+.TP
 \fB\fC\-s\fR
-    Accepted for backwards compatibility only.
+Accepted for backwards compatibility only.
 .PP
 See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
 the log verbosity and how to locate the remote server.

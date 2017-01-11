@@ -16,8 +16,8 @@ with properties `bucket`, `key`, `value`, `_id`, and `_etag`.  This command also
 provides an additional JSON property on each object:
 
 `_count`
-    A count of total objects matching this filter on the server.  See the
-    important caveats below.
+  A count of total objects matching this filter on the server.  See the
+  important caveats below.
 
 `findobjects` operations are always bounded in size.  See the `-l LIMIT` option.
 You must use multiple invocations using the `-l LIMIT` and `-o OFFSET` options
@@ -60,33 +60,33 @@ use unindexed fields often results in truncated result sets.
 ## OPTIONS
 
 `-a FIELD`
-    Sort results in ascending order by indexed field `FIELD`.
+  Sort results in ascending order by indexed field `FIELD`.
 
 `-d DESC`
-    Sort results in descending order by indexed field `FIELD`.
+  Sort results in descending order by indexed field `FIELD`.
 
 `-H`
-    Print objects using minimal JSON with one object per line (instead of
-    inserting newlines within objects and indenting for readability)
+  Print objects using minimal JSON with one object per line (instead of
+  inserting newlines within objects and indenting for readability)
 
 `-l LIMIT`
-    Return at most `LIMIT` objects.  With `-o OFFSET`, this can be used to page
-    through a large result set.  However, this interacts badly with filters on
-    undexed fields as described above.  If this option is unspecified, a default
-    limit is provided (which is currently 1000).
+  Return at most `LIMIT` objects.  With `-o OFFSET`, this can be used to page
+  through a large result set.  However, this interacts badly with filters on
+  undexed fields as described above.  If this option is unspecified, a default
+  limit is provided (which is currently 1000).
 
 `-n`
-    Do not report the `_count` field with each object.  (This also skips
-    executing the underlying query on the server to perform the count.)
+  Do not report the `_count` field with each object.  (This also skips
+  executing the underlying query on the server to perform the count.)
 
 `-o OFFSET`
-    Skip the first `OFFSET` objects matching the filter.  With `-l LIMIT`, this
-    can be used to page through a large result set.
-    <!-- XXX is that right? -->
+  Skip the first `OFFSET` objects matching the filter.  With `-l LIMIT`, this
+  can be used to page through a large result set.
+  <!-- XXX is that right? -->
 
 `-s`
-    Do not execute the query, but instead report the SQL strings that would be
-    used to execute the query on the underlying data store.
+  Do not execute the query, but instead report the SQL strings that would be
+  used to execute the query on the underlying data store.
 
 See `moray(1)` for information about the `COMMON_OPTIONS`, which control
 the log verbosity and how to locate the remote server.

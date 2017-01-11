@@ -22,13 +22,13 @@ with `delmany` as well.
 ## OPTIONS
 
 `-l LIMIT`
-    Remove at most `LIMIT` objects.  This interacts badly with filters on
-    unindexed fields, as described in `findobjects(1)`.  If this option is
-    unspecified, a default limit is provided (which is currently 1000).
+  Remove at most `LIMIT` objects.  This interacts badly with filters on
+  unindexed fields, as described in `findobjects(1)`.  If this option is
+  unspecified, a default limit is provided (which is currently 1000).
 
 `-o OFFSET`
-    Skip the first `OFFSET` objects matching the filter.
-    <!-- XXX is that right? -->
+  Skip the first `OFFSET` objects matching the filter.
+  <!-- XXX is that right? -->
 
 See `moray(1)` for information about the `COMMON_OPTIONS`, which control
 the log verbosity and how to locate the remote server.

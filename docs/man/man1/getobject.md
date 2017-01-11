@@ -14,36 +14,36 @@ Fetches the contents of the object in `BUCKET` having primary key `KEY`.  The
 result is emitted as JSON with properties:
 
 `bucket`
-    matches BUCKET
+  matches BUCKET
 
 `key`
-    matches KEY
+  matches KEY
 
 `value`
-    the contents of the object, which are completely user-defined
+  the contents of the object, which are completely user-defined
 
 `_id`
-    a unique, integer id associated with each object.  It should not be assumed
-    that these ids are assigned in any particular order, but each update of an
-    object will cause it to have a new id.  Critically, it is not true that if a
-    caller inserts objects 1 and 2 concurrently and another caller sees object
-    2, then it could also see object 1.  Ids may be assigned out of insertion
-    order.
+  a unique, integer id associated with each object.  It should not be assumed
+  that these ids are assigned in any particular order, but each update of an
+  object will cause it to have a new id.  Critically, it is not true that if a
+  caller inserts objects 1 and 2 concurrently and another caller sees object
+  2, then it could also see object 1.  Ids may be assigned out of insertion
+  order.
 
 `_etag`
-    a numeric value calculated from the contents of the object.  This can be
-    used for conditional put operations.  See `putobject(1)`.
+  a numeric value calculated from the contents of the object.  This can be
+  used for conditional put operations.  See `putobject(1)`.
 
 <!-- XXX -->
 
 ## OPTIONS
 
 `-H`
-    Print the object using minimal JSON (instead of inserting newlines and
-    indenting for readability)
+  Print the object using minimal JSON (instead of inserting newlines and
+  indenting for readability)
 
 `-s`
-    Accepted for backwards compatibility only.
+  Accepted for backwards compatibility only.
 
 See `moray(1)` for information about the `COMMON_OPTIONS`, which control
 the log verbosity and how to locate the remote server.

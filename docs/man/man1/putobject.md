@@ -19,20 +19,20 @@ contents are specified by the JSON string `DATA`.
 ## OPTIONS
 
 `-d DATA`
-    Specifies the contents of the object as a JSON string.  Generally, objects
-    should conform to a user-defined schema, having a fixed set of properties
-    and types.  However, there are no constraints imposed by the server other
-    than uniqueness for fields that are specifically marked unique in the bucket
-    configuration.  Top-level properties of the object that correspond to
-    indexed fields will be extracted and included in an index so that it can be
-    queried and updated.  See `putbucket(1)` for details.
+  Specifies the contents of the object as a JSON string.  Generally, objects
+  should conform to a user-defined schema, having a fixed set of properties
+  and types.  However, there are no constraints imposed by the server other
+  than uniqueness for fields that are specifically marked unique in the bucket
+  configuration.  Top-level properties of the object that correspond to
+  indexed fields will be extracted and included in an index so that it can be
+  queried and updated.  See `putbucket(1)` for details.
 
 `-e ETAG`
-    Only execute this operation if the corresponding object on the server
-    currently has etag `ETAG`.  Etags are computed on the server based on
-    object contents, and they are included in the results of any object fetch
-    operation.  This option can be used to implement optimistic concurrency
-    control (as a form of test-and-set operation).
+  Only execute this operation if the corresponding object on the server
+  currently has etag `ETAG`.  Etags are computed on the server based on
+  object contents, and they are included in the results of any object fetch
+  operation.  This option can be used to implement optimistic concurrency
+  control (as a form of test-and-set operation).
 
 <!-- XXX is there a put-if-not-exists? -->
 

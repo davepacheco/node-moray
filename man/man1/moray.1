@@ -97,61 +97,61 @@ if neither is specified, the second mode is invoked with default values
 .SH OPTIONS
 .PP
 The following \fB\fCCOMMON_OPTIONS\fR options are accepted by all of these commands:
-.PP
+.TP
 \fB\fC\-b, \-\-bootstrap\-domain BOOTSTRAP_DOMAIN\fR
-    Specifies the domain name for the nameservers themselves.  Triton and Manta
-    both provide domain names for the nameservers themselves.  This is useful in
-    split DNS environments to ensure that the Moray only uses the nameservers
-    that know about the target service.  This applies to both SRV\-record\-based
-    discovery and traditional A\-record\-based discovery, but has no impact when
-    connecting to a specific IP address and port.
-.PP
+Specifies the domain name for the nameservers themselves.  Triton and Manta
+both provide domain names for the nameservers themselves.  This is useful in
+split DNS environments to ensure that the Moray only uses the nameservers
+that know about the target service.  This applies to both SRV\-record\-based
+discovery and traditional A\-record\-based discovery, but has no impact when
+connecting to a specific IP address and port.
+.TP
 \fB\fC\-h, \-\-host HOST_OR_IP\fR
-    Specifies an IP address or DNS domain for the remote Moray server.  See
-    above for details.
-.PP
+Specifies an IP address or DNS domain for the remote Moray server.  See
+above for details.
+.TP
 \fB\fC\-p, \-\-port PORT\fR
-    Specifies the TCP port for the remote Moray server.  See above for details.
-.PP
+Specifies the TCP port for the remote Moray server.  See above for details.
+.TP
 \fB\fC\-S, \-\-service SERVICE\fR
-    Specifies a DNS domain to be used for SRV\-based service discovery of the
-    remote Moray server.  See above for details.  \fB\fCSERVICE\fR must not be an IP
-    address.
-.PP
+Specifies a DNS domain to be used for SRV\-based service discovery of the
+remote Moray server.  See above for details.  \fB\fCSERVICE\fR must not be an IP
+address.
+.TP
 \fB\fC\-v, \-\-verbose\fR
-    Increases the verbosity of the built\-in bunyan logger.  By default, the
-    logger is created with bunyan level \fB\fCfatal\fR\&.  Each additional use of \fB\fC\-v\fR
-    increases the verbosity by one level (to \fB\fCerror\fR, \fB\fCwarn\fR, and so on).  Log
-    messages are emitted to stderr.  See also the \fB\fCLOG_LEVEL\fR environment
-    variable.
+Increases the verbosity of the built\-in bunyan logger.  By default, the
+logger is created with bunyan level \fB\fCfatal\fR\&.  Each additional use of \fB\fC\-v\fR
+increases the verbosity by one level (to \fB\fCerror\fR, \fB\fCwarn\fR, and so on).  Log
+messages are emitted to stderr.  See also the \fB\fCLOG_LEVEL\fR environment
+variable.
 .SH ENVIRONMENT
-.PP
+.TP
 \fB\fCLOG_LEVEL\fR
-    Sets the node\-bunyan logging level. Defaults to "fatal".
-.PP
+Sets the node\-bunyan logging level. Defaults to "fatal".
+.TP
 \fB\fCMORAY_BOOTSTRAP_DOMAIN\fR
-    Used as a fallback value for the \fB\fC\-b\fR/\fB\fC\-\-bootstrap\-domain\fR option.
-.PP
+Used as a fallback value for the \fB\fC\-b\fR/\fB\fC\-\-bootstrap\-domain\fR option.
+.TP
 \fB\fCMORAY_SERVICE\fR
-    Used as a fallback value for \fB\fC\-S\fR/\fB\fC\-\-service\fR if neither of \fB\fC\-h\fR/\fB\fC\-\-host\fR or
-    \fB\fC\-p\fR/\fB\fC\-\-port\fR is specified.
-.PP
+Used as a fallback value for \fB\fC\-S\fR/\fB\fC\-\-service\fR if neither of \fB\fC\-h\fR/\fB\fC\-\-host\fR or
+\fB\fC\-p\fR/\fB\fC\-\-port\fR is specified.
+.TP
 \fB\fCMORAY_URL\fR
-    A URL of the form \fB\fCtcp://HOSTNAME_OR_IP[:PORT]\fR where the specified
-    \fB\fCHOSTNAME_OR_IP\fR and \fB\fCPORT\fR will be used as fallback values for the
-    \fB\fC\-h\fR/\fB\fC\-\-host\fR or \fB\fC\-p/\-\-port\fR options, respectively.  This value is only used
-    if \fB\fCMORAY_SERVICE\fR is not present in the environment and at least one of the
-    \fB\fC\-h\fR/\fB\fC\-\-host\fR or \fB\fC\-p\fR/\fB\fC\-\-port\fR options is not specified.
+A URL of the form \fB\fCtcp://HOSTNAME_OR_IP[:PORT]\fR where the specified
+\fB\fCHOSTNAME_OR_IP\fR and \fB\fCPORT\fR will be used as fallback values for the
+\fB\fC\-h\fR/\fB\fC\-\-host\fR or \fB\fC\-p/\-\-port\fR options, respectively.  This value is only used
+if \fB\fCMORAY_SERVICE\fR is not present in the environment and at least one of the
+\fB\fC\-h\fR/\fB\fC\-\-host\fR or \fB\fC\-p\fR/\fB\fC\-\-port\fR options is not specified.
 .SH EXIT STATUS
-.PP
+.TP
 0
-    Indicates successful completion
-.PP
+Indicates successful completion
+.TP
 1
-    Indicates failure
-.PP
+Indicates failure
+.TP
 2
-    Indicates an invalid invocation (usage error)
+Indicates an invalid invocation (usage error)
 .SH EXAMPLES
 .SH SEE ALSO
 .PP

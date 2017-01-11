@@ -77,61 +77,61 @@ If none of these command-line options are specified:
 The following `COMMON_OPTIONS` options are accepted by all of these commands:
 
 `-b, --bootstrap-domain BOOTSTRAP_DOMAIN`
-    Specifies the domain name for the nameservers themselves.  Triton and Manta
-    both provide domain names for the nameservers themselves.  This is useful in
-    split DNS environments to ensure that the Moray only uses the nameservers
-    that know about the target service.  This applies to both SRV-record-based
-    discovery and traditional A-record-based discovery, but has no impact when
-    connecting to a specific IP address and port.
+  Specifies the domain name for the nameservers themselves.  Triton and Manta
+  both provide domain names for the nameservers themselves.  This is useful in
+  split DNS environments to ensure that the Moray only uses the nameservers
+  that know about the target service.  This applies to both SRV-record-based
+  discovery and traditional A-record-based discovery, but has no impact when
+  connecting to a specific IP address and port.
 
 `-h, --host HOST_OR_IP`
-    Specifies an IP address or DNS domain for the remote Moray server.  See
-    above for details.
+  Specifies an IP address or DNS domain for the remote Moray server.  See
+  above for details.
 
 `-p, --port PORT`
-    Specifies the TCP port for the remote Moray server.  See above for details.
+  Specifies the TCP port for the remote Moray server.  See above for details.
 
 `-S, --service SERVICE`
-    Specifies a DNS domain to be used for SRV-based service discovery of the
-    remote Moray server.  See above for details.  `SERVICE` must not be an IP
-    address.
+  Specifies a DNS domain to be used for SRV-based service discovery of the
+  remote Moray server.  See above for details.  `SERVICE` must not be an IP
+  address.
 
 `-v, --verbose`
-    Increases the verbosity of the built-in bunyan logger.  By default, the
-    logger is created with bunyan level `fatal`.  Each additional use of `-v`
-    increases the verbosity by one level (to `error`, `warn`, and so on).  Log
-    messages are emitted to stderr.  See also the `LOG_LEVEL` environment
-    variable.
+  Increases the verbosity of the built-in bunyan logger.  By default, the
+  logger is created with bunyan level `fatal`.  Each additional use of `-v`
+  increases the verbosity by one level (to `error`, `warn`, and so on).  Log
+  messages are emitted to stderr.  See also the `LOG_LEVEL` environment
+  variable.
 
 ## ENVIRONMENT
 
 `LOG_LEVEL`
-    Sets the node-bunyan logging level. Defaults to "fatal".
+  Sets the node-bunyan logging level. Defaults to "fatal".
 
 `MORAY_BOOTSTRAP_DOMAIN`
-    Used as a fallback value for the `-b`/`--bootstrap-domain` option.
+  Used as a fallback value for the `-b`/`--bootstrap-domain` option.
 
 `MORAY_SERVICE`
-    Used as a fallback value for `-S`/`--service` if neither of `-h`/`--host` or
-    `-p`/`--port` is specified.
+  Used as a fallback value for `-S`/`--service` if neither of `-h`/`--host` or
+  `-p`/`--port` is specified.
 
 `MORAY_URL`
-    A URL of the form `tcp://HOSTNAME_OR_IP[:PORT]` where the specified
-    `HOSTNAME_OR_IP` and `PORT` will be used as fallback values for the
-    `-h`/`--host` or `-p/--port` options, respectively.  This value is only used
-    if `MORAY_SERVICE` is not present in the environment and at least one of the
-    `-h`/`--host` or `-p`/`--port` options is not specified.
+  A URL of the form `tcp://HOSTNAME_OR_IP[:PORT]` where the specified
+  `HOSTNAME_OR_IP` and `PORT` will be used as fallback values for the
+  `-h`/`--host` or `-p/--port` options, respectively.  This value is only used
+  if `MORAY_SERVICE` is not present in the environment and at least one of the
+  `-h`/`--host` or `-p`/`--port` options is not specified.
 
 ## EXIT STATUS
 
 0
-    Indicates successful completion
+  Indicates successful completion
 
 1
-    Indicates failure
+  Indicates failure
 
 2
-    Indicates an invalid invocation (usage error)
+  Indicates an invalid invocation (usage error)
 
 
 ## EXAMPLES

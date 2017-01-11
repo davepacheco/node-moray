@@ -11,10 +11,10 @@ Fetches objects from bucket \fB\fCBUCKET\fR whose properties match the filter \f
 Matching objects are printed as JSON objects similar to the \fB\fCgetobject\fR command,
 with properties \fB\fCbucket\fR, \fB\fCkey\fR, \fB\fCvalue\fR, \fB\fC_id\fR, and \fB\fC_etag\fR\&.  This command also
 provides an additional JSON property on each object:
-.PP
+.TP
 \fB\fC_count\fR
-    A count of total objects matching this filter on the server.  See the
-    important caveats below.
+A count of total objects matching this filter on the server.  See the
+important caveats below.
 .PP
 \fB\fCfindobjects\fR operations are always bounded in size.  See the \fB\fC\-l LIMIT\fR option.
 You must use multiple invocations using the \fB\fC\-l LIMIT\fR and \fB\fC\-o OFFSET\fR options
@@ -69,35 +69,35 @@ pagination (the \fB\fC\-o OFFSET\fR and \fB\fC\-l LIMIT\fR options) and they do 
 correct values for \fB\fC_count\fR\&.  Attempting to use these options with filters that
 use unindexed fields often results in truncated result sets.
 .SH OPTIONS
-.PP
+.TP
 \fB\fC\-a FIELD\fR
-    Sort results in ascending order by indexed field \fB\fCFIELD\fR\&.
-.PP
+Sort results in ascending order by indexed field \fB\fCFIELD\fR\&.
+.TP
 \fB\fC\-d DESC\fR
-    Sort results in descending order by indexed field \fB\fCFIELD\fR\&.
-.PP
+Sort results in descending order by indexed field \fB\fCFIELD\fR\&.
+.TP
 \fB\fC\-H\fR
-    Print objects using minimal JSON with one object per line (instead of
-    inserting newlines within objects and indenting for readability)
-.PP
+Print objects using minimal JSON with one object per line (instead of
+inserting newlines within objects and indenting for readability)
+.TP
 \fB\fC\-l LIMIT\fR
-    Return at most \fB\fCLIMIT\fR objects.  With \fB\fC\-o OFFSET\fR, this can be used to page
-    through a large result set.  However, this interacts badly with filters on
-    undexed fields as described above.  If this option is unspecified, a default
-    limit is provided (which is currently 1000).
-.PP
+Return at most \fB\fCLIMIT\fR objects.  With \fB\fC\-o OFFSET\fR, this can be used to page
+through a large result set.  However, this interacts badly with filters on
+undexed fields as described above.  If this option is unspecified, a default
+limit is provided (which is currently 1000).
+.TP
 \fB\fC\-n\fR
-    Do not report the \fB\fC_count\fR field with each object.  (This also skips
-    executing the underlying query on the server to perform the count.)
-.PP
+Do not report the \fB\fC_count\fR field with each object.  (This also skips
+executing the underlying query on the server to perform the count.)
+.TP
 \fB\fC\-o OFFSET\fR
-    Skip the first \fB\fCOFFSET\fR objects matching the filter.  With \fB\fC\-l LIMIT\fR, this
-    can be used to page through a large result set.
-    <!\-\- XXX is that right? \-\->
-.PP
+Skip the first \fB\fCOFFSET\fR objects matching the filter.  With \fB\fC\-l LIMIT\fR, this
+can be used to page through a large result set.
+<!\-\- XXX is that right? \-\->
+.TP
 \fB\fC\-s\fR
-    Do not execute the query, but instead report the SQL strings that would be
-    used to execute the query on the underlying data store.
+Do not execute the query, but instead report the SQL strings that would be
+used to execute the query on the underlying data store.
 .PP
 See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
 the log verbosity and how to locate the remote server.

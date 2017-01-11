@@ -185,59 +185,59 @@ The client constructor uses named arguments on a single `args` object.
 All constructor invocations must provide:
 
 `log` (object)
-    a bunyan-style logger
+  a bunyan-style logger
 
 All constructor invocations must also provide one of the following:
 
 `srvDomain` (string)
-    DNS domain name for SRV-based service discovery
+  DNS domain name for SRV-based service discovery
 
 `url` (string)
-    Describes the hostname or IP address and TCP port to specify a specific
-    Moray server to connect to (instead of using SRV-based service discovery).
-    This is deprecated for servers, and should only be used for tools, for
-    testing, and for unusual, temporary operational changes.  The format for
-    this option is the same as for the `MORAY_URL` environment variable
-    described in `moray(1)`.
+  Describes the hostname or IP address and TCP port to specify a specific
+  Moray server to connect to (instead of using SRV-based service discovery).
+  This is deprecated for servers, and should only be used for tools, for
+  testing, and for unusual, temporary operational changes.  The format for
+  this option is the same as for the `MORAY_URL` environment variable
+  described in `moray(1)`.
 
 `host` (string) and `port` (integer or string)
-    Like `URL`, but specified using different properties.
+  Like `URL`, but specified using different properties.
 
 Callers may also provide:
 
 `cueballOptions` (object)
-    Overrides cueball-related options, including various timeouts and delays.
-    For specific options that can be overridden here, see the source.  **NOTE:
-    it's not expected that most consumers would need to specify any of these.
-    Default values ought to work for the port, DNS service, and all the various
-    timeouts, delays, and retry limits.**
+  Overrides cueball-related options, including various timeouts and delays.
+  For specific options that can be overridden here, see the source.  **NOTE:
+  it's not expected that most consumers would need to specify any of these.
+  Default values ought to work for the port, DNS service, and all the various
+  timeouts, delays, and retry limits.**
 
 `failFast` (boolean)
-    If true, this sets a more aggressive retry policy, and the client emits
-    "error" when the underlying Cueball set reaches state "failed".  This is
-    intended for use by command-line tools to abort when it looks like dependent
-    servers are down.  Servers should generally not specify this option because
-    they should wait indefinitely for dependent services to come up.
+  If true, this sets a more aggressive retry policy, and the client emits
+  "error" when the underlying Cueball set reaches state "failed".  This is
+  intended for use by command-line tools to abort when it looks like dependent
+  servers are down.  Servers should generally not specify this option because
+  they should wait indefinitely for dependent services to come up.
 
 `unwrapErrors` (boolean)
-    If false (the default), Errors emitted by this client and RPC requests will
-    contain a cause chain that explains precisely what happened.  For example,
-    if an RPC fails with SomeError, you'll get back a FastRequestError
-    (indicating a request failure) caused by a FastServerError (indicating that
-    the failure was on the remote server, as opposed to a local or
-    transport-level failure) caused by a SomeError.  In this mode, you should
-    use VError.findCauseByName(err, 'SomeError') to determine whether the root
-    cause was a SomeError.
-    If the "unwrapErrors" option is true, then Fast-level errors are unwrapped
-    and the first non-Fast error in the cause chain is returned.  This is
-    provided primarily for compatibility with legacy code that uses err.name to
-    determine what kind of Error was returned.  New code should prefer
-    VError.findCauseByName() instead.
+  If false (the default), Errors emitted by this client and RPC requests will
+  contain a cause chain that explains precisely what happened.  For example,
+  if an RPC fails with SomeError, you'll get back a FastRequestError
+  (indicating a request failure) caused by a FastServerError (indicating that
+  the failure was on the remote server, as opposed to a local or
+  transport-level failure) caused by a SomeError.  In this mode, you should
+  use VError.findCauseByName(err, 'SomeError') to determine whether the root
+  cause was a SomeError.
+  If the "unwrapErrors" option is true, then Fast-level errors are unwrapped
+  and the first non-Fast error in the cause chain is returned.  This is
+  provided primarily for compatibility with legacy code that uses err.name to
+  determine what kind of Error was returned.  New code should prefer
+  VError.findCauseByName() instead.
 
 `mustCloseBeforeNormalProcessExit` (boolean)
-    If true, then cause the program to crash if it would otherwise exit 0 and
-    this client has not been closed.  This is useful for making sure that client
-    consumers clean up after themselves.
+  If true, then cause the program to crash if it would otherwise exit 0 and
+  this client has not been closed.  This is useful for making sure that client
+  consumers clean up after themselves.
 
 Some legacy options are accepted as documented in the source.
 

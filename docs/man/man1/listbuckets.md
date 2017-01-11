@@ -1,12 +1,12 @@
-# listbucket 1 "December 2016" Moray "Moray Client Tools"
+# listbuckets 1 "December 2016" Moray "Moray Client Tools"
 
 ## NAME
 
-listbucket - print detailed information about all buckets
+listbuckets - print detailed information about all buckets
 
 ## SYNOPSIS
 
-`listbucket [COMMON_OPTIONS]`
+`listbuckets [COMMON_OPTIONS]`
 
 ## DESCRIPTION
 

@@ -11,18 +11,18 @@ Attempts to determine whether Moray is functioning.  For this command, success
 indicates that Moray is functioning and able to respond to a request.  Failure
 indicates the command could not successfully connect and complete a request.
 .SH OPTIONS
-.PP
+.TP
 \fB\fC\-d\fR
-    Attempt to determine whether Moray has a working connection to its
-    underlying data store by making a "deep" ping request instead of a trivial
-    request.
-.PP
+Attempt to determine whether Moray has a working connection to its
+underlying data store by making a "deep" ping request instead of a trivial
+request.
+.TP
 \fB\fC\-F\fR
-    Block until at least one Moray server is found and a connection is
-    established, then execute the ping request.  This is intended to
-    programmatically wait for Moray to become available, although if the request
-    fails (e.g., because of a network issue), the request is not retried, and in
-    this case Moray may still be down.
+Block until at least one Moray server is found and a connection is
+established, then execute the ping request.  This is intended to
+programmatically wait for Moray to become available, although if the request
+fails (e.g., because of a network issue), the request is not retried, and in
+this case Moray may still be down.
 .PP
 See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
 the log verbosity and how to locate the remote server.

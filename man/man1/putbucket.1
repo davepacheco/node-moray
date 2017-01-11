@@ -38,53 +38,53 @@ When you use \fB\fCputbucket(1)\fR to add a new indexed field, that field will n
 treated as indexed (in filters with \fB\fCfindobjects\fR and similar tools) until all
 objects in the bucket have been reindexed.  See \fB\fCreindexobjects(1)\fR\&.
 .SH OPTIONS
-.PP
+.TP
 \fB\fC\-i FIELD[:TYPE]\fR
-    Adds an index on the top\-level property called \fB\fCFIELD\fR\&.  \fB\fCFIELD\fR can
-    subsequently be used in filters for \fB\fCfindobjects\fR, \fB\fCupdatemany\fR, and
-    \fB\fCdelmany\fR operations.  The optional \fB\fCTYPE\fR is interpreted by the server.
-.PP
+Adds an index on the top\-level property called \fB\fCFIELD\fR\&.  \fB\fCFIELD\fR can
+subsequently be used in filters for \fB\fCfindobjects\fR, \fB\fCupdatemany\fR, and
+\fB\fCdelmany\fR operations.  The optional \fB\fCTYPE\fR is interpreted by the server.
+.TP
 \fB\fC\-s\fR
-    Read the bucket's configuration from stdin rather than the other
-    command\-line options.  Other bucket\-related command\-line options are
-    ignored.
-.PP
+Read the bucket's configuration from stdin rather than the other
+command\-line options.  Other bucket\-related command\-line options are
+ignored.
+.TP
 \fB\fC\-t\fR
-    Enable the \fB\fCtrackModification\fR server\-side option for this bucket.
-.PP
+Enable the \fB\fCtrackModification\fR server\-side option for this bucket.
+.TP
 \fB\fC\-u FIELD[:TYPE]\fR
-    Adds an index just like the \fB\fC[\-i]\fR option, but additionally require that
-    values of field \fB\fCFIELD\fR must be unique within the bucket.  Attempting to
-    insert a second object having the same value of \fB\fCFIELD\fR as another object in
-    the bucket will fail.  This constraint is maintained by the underlying data
-    store.
-.PP
+Adds an index just like the \fB\fC[\-i]\fR option, but additionally require that
+values of field \fB\fCFIELD\fR must be unique within the bucket.  Attempting to
+insert a second object having the same value of \fB\fCFIELD\fR as another object in
+the bucket will fail.  This constraint is maintained by the underlying data
+store.
+.TP
 \fB\fC\-x VERSION\fR
-    Only create or update the bucket if it does not already exist on the server,
-    or if it exists with no version number, or if it exists with a version
-    number that's older than \fB\fCVERSION\fR\&.  The new \fB\fCVERSION\fR is stored with the
-    bucket configuration.
+Only create or update the bucket if it does not already exist on the server,
+or if it exists with no version number, or if it exists with a version
+number that's older than \fB\fCVERSION\fR\&.  The new \fB\fCVERSION\fR is stored with the
+bucket configuration.
 .PP
 See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
 the log verbosity and how to locate the remote server.
 .PP
 The JSON read from stdin may have the following properties:
-.PP
+.TP
 \fB\fCindexes\fR
-    an object whose properties identify each of the indexed fields.  Each value
-    is an object with properties \fB\fCtype\fR (a string) and \fB\fCunique\fR (a boolean).
-.PP
+an object whose properties identify each of the indexed fields.  Each value
+is an object with properties \fB\fCtype\fR (a string) and \fB\fCunique\fR (a boolean).
+.TP
 \fB\fCoptions\fR
-    an object describing options interpreted by the server.  This may include
-    the \fB\fCtrackModification\fR option, which should be a boolean value.
-.PP
+an object describing options interpreted by the server.  This may include
+the \fB\fCtrackModification\fR option, which should be a boolean value.
+.TP
 \fB\fCpost\fR, \fB\fCpre\fR
-    arrays of strings containing JavaScript functions to be executed before
-    (\fB\fCpre\fR) or after (\fB\fCpost\fR) various operations.  See server documentation for
-    details.  The strings themselves are evaluated in the context of this tool.
-.PP
+arrays of strings containing JavaScript functions to be executed before
+(\fB\fCpre\fR) or after (\fB\fCpost\fR) various operations.  See server documentation for
+details.  The strings themselves are evaluated in the context of this tool.
+.TP
 \fB\fCversion\fR
-    an integer version number, as would be specified with \fB\fC\-x\fR
+an integer version number, as would be specified with \fB\fC\-x\fR
 .PP
 Default values are provided that correspond to this configuration:
 .PP

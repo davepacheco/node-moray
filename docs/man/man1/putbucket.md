@@ -39,30 +39,30 @@ objects in the bucket have been reindexed.  See `reindexobjects(1)`.
 ## OPTIONS
 
 `-i FIELD[:TYPE]`
-    Adds an index on the top-level property called `FIELD`.  `FIELD` can
-    subsequently be used in filters for `findobjects`, `updatemany`, and
-    `delmany` operations.  The optional `TYPE` is interpreted by the server.
+  Adds an index on the top-level property called `FIELD`.  `FIELD` can
+  subsequently be used in filters for `findobjects`, `updatemany`, and
+  `delmany` operations.  The optional `TYPE` is interpreted by the server.
 
 `-s`
-    Read the bucket's configuration from stdin rather than the other
-    command-line options.  Other bucket-related command-line options are
-    ignored.
+  Read the bucket's configuration from stdin rather than the other
+  command-line options.  Other bucket-related command-line options are
+  ignored.
 
 `-t`
-    Enable the `trackModification` server-side option for this bucket.
+  Enable the `trackModification` server-side option for this bucket.
 
 `-u FIELD[:TYPE]`
-    Adds an index just like the `[-i]` option, but additionally require that
-    values of field `FIELD` must be unique within the bucket.  Attempting to
-    insert a second object having the same value of `FIELD` as another object in
-    the bucket will fail.  This constraint is maintained by the underlying data
-    store.
+  Adds an index just like the `[-i]` option, but additionally require that
+  values of field `FIELD` must be unique within the bucket.  Attempting to
+  insert a second object having the same value of `FIELD` as another object in
+  the bucket will fail.  This constraint is maintained by the underlying data
+  store.
 
 `-x VERSION`
-    Only create or update the bucket if it does not already exist on the server,
-    or if it exists with no version number, or if it exists with a version
-    number that's older than `VERSION`.  The new `VERSION` is stored with the
-    bucket configuration.
+  Only create or update the bucket if it does not already exist on the server,
+  or if it exists with no version number, or if it exists with a version
+  number that's older than `VERSION`.  The new `VERSION` is stored with the
+  bucket configuration.
 
 See `moray(1)` for information about the `COMMON_OPTIONS`, which control
 the log verbosity and how to locate the remote server.
@@ -70,20 +70,20 @@ the log verbosity and how to locate the remote server.
 The JSON read from stdin may have the following properties:
 
 `indexes`
-    an object whose properties identify each of the indexed fields.  Each value
-    is an object with properties `type` (a string) and `unique` (a boolean).
+  an object whose properties identify each of the indexed fields.  Each value
+  is an object with properties `type` (a string) and `unique` (a boolean).
 
 `options`
-    an object describing options interpreted by the server.  This may include
-    the `trackModification` option, which should be a boolean value.
+  an object describing options interpreted by the server.  This may include
+  the `trackModification` option, which should be a boolean value.
 
 `post`, `pre`
-    arrays of strings containing JavaScript functions to be executed before
-    (`pre`) or after (`post`) various operations.  See server documentation for
-    details.  The strings themselves are evaluated in the context of this tool.
+  arrays of strings containing JavaScript functions to be executed before
+  (`pre`) or after (`post`) various operations.  See server documentation for
+  details.  The strings themselves are evaluated in the context of this tool.
 
 `version`
-    an integer version number, as would be specified with `-x`
+  an integer version number, as would be specified with `-x`
 
 Default values are provided that correspond to this configuration:
 

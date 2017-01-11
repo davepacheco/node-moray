@@ -16,15 +16,15 @@ large lists of objects.
 caveats described there around the use of unindexed fields apply to filters used
 with \fB\fCdelmany\fR as well.
 .SH OPTIONS
-.PP
+.TP
 \fB\fC\-l LIMIT\fR
-    Remove at most \fB\fCLIMIT\fR objects.  This interacts badly with filters on
-    unindexed fields, as described in \fB\fCfindobjects(1)\fR\&.  If this option is
-    unspecified, a default limit is provided (which is currently 1000).
-.PP
+Remove at most \fB\fCLIMIT\fR objects.  This interacts badly with filters on
+unindexed fields, as described in \fB\fCfindobjects(1)\fR\&.  If this option is
+unspecified, a default limit is provided (which is currently 1000).
+.TP
 \fB\fC\-o OFFSET\fR
-    Skip the first \fB\fCOFFSET\fR objects matching the filter.
-    <!\-\- XXX is that right? \-\->
+Skip the first \fB\fCOFFSET\fR objects matching the filter.
+<!\-\- XXX is that right? \-\->
 .PP
 See \fB\fCmoray(1)\fR for information about the \fB\fCCOMMON_OPTIONS\fR, which control
 the log verbosity and how to locate the remote server.
